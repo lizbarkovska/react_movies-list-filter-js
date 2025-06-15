@@ -1,19 +1,18 @@
 import './App.scss';
+import { useState } from 'react';
 import { MoviesList } from './components/MoviesList';
 import moviesFromServer from './api/movies.json';
-import { useState } from 'react';
 
 export const App = () => {
   const [query, setQuery] = useState('');
   const filteredGoods = [...moviesFromServer].filter(
     movie =>
-      movie.title
-        .toLocaleLowerCase()
-        .includes(query.toLocaleLowerCase().trim()) ||
+      movie.title.toLocaleLowerCase().includes(query.toLowerCase().trim()) ||
       movie.description
         .toLocaleLowerCase()
-        .includes(query.toLocaleLowerCase().trim()),
+        .includes(query.toLowerCase().trim()),
   );
+
   return (
     <div className="page">
       <div className="page-content">
